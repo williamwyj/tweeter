@@ -25,11 +25,97 @@ body {
 }
 
 main {
-  width: 90%
+  display:flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
   
 }
 
+.existing-tweets {
+  display:flex;
+  flex-direction: column;
+  border-color: #545149;
+  border-style: solid;
+  width: 100%;
+  margin: 10px;
+}
 
+.existing-tweets:hover {
+  box-shadow: 10px 10px lightblue;
+}
+
+.tweet-header {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f1ec;
+  background: left;
+  height: 100%;
+}
+
+img.tweeter {
+  flex-grow: 0;
+  margin: 20px;
+  margin-right: 18px;
+  height:auto;
+  width:auto;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+h2.tweeter {
+  flex-grow: 18;
+}
+
+handle.tweeter {
+  flex-grow: 1;
+  color: lightgray;
+}
+
+h2[name="username"] {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+article {
+  margin:20px;
+  font-weight:600;
+}
+
+hr {
+  border-width: 2px;
+  color: #545149;
+  border-style: solid;
+  width: 98%;
+  margin-bottom: 1px;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+output[name="time"] {
+  font-size: 15px;
+  margin: 15px;
+}
+
+div[name="tweet-footer-icons"] {
+  flex-direction: row;
+  margin : 15px;
+}
+
+.tweet-footer-icons {
+  font-size:15px;
+  margin: 5px;
+  color: #4056a1;
+}
+
+.tweet-footer-icons:hover {
+  color: #e1ad01 ;
+}
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
