@@ -32,6 +32,13 @@ main {
   
 }
 
+.userPhoto {
+  width : auto;
+  height : auto;
+  max-width: 350px;
+  max-height: 350px;
+}
+
 .existing-tweets {
   display:flex;
   flex-direction: column;
