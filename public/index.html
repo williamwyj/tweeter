@@ -49,20 +49,23 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form action="/tweets/" method="POST">
+        <p hidden class="error-message" id="emptyError">Tweet cannot be empty!</p>
+        <p hidden class="error-message" id="overError">Tweet cannot exceed 140 characters!</p>
+        <br>
+        <form action="/tweets/" method="POST" id="new-tweet">
           <div2>
-          <label for="tweet-text">What are you humming about?</label>
+          <label for="tweet-text" id="text-above-input">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           </div2>
           <div1>
-            <button type="submit">Tweet</button>
+            <button type="submit" id="submit-new-tweet">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div1>
         </form>
       </section>
       <br>
       <section id="tweets-container">
+        
         <!-- <section class="existing-tweets">
           <header class="tweet-header">
             <img class="tweeter" src="https://i.imgur.com/73hZDYK.png">

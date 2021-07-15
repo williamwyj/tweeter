@@ -4,59 +4,11 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
-
-        // <section class="existing-tweets">
-        //   <header class="tweet-header">
-        //     <img class="tweeter" src="https://i.imgur.com/73hZDYK.png">
-        //     <h2 class="tweeter" name="username">Newton</h2>
-        //     <handle class="tweeter" ><strong>@SirIssac</strong></handle>
-        //   </header>
-        //   <article>
-        //     If I have seen further it is by standing on the shoulders of giants
-        //   </article>
-        //   <hr>
-        //   <footer>
-            
-        //     <output name ="time">10 days ago</output>
-        //     <div name="tweet-footer-icons">
-        //       <i class="fas fa-flag tweet-footer-icons"></i>
-        //       <i class="fas fa-retweet tweet-footer-icons"></i>
-        //       <i class="fas fa-heart tweet-footer-icons"></i>
-        //     </div>
-        //   </footer>
-        // </section>
-
 const renderTweets = function(tweets) {
+  $('#tweets-container').empty();
   for (const tweet of tweets) {
-    console.log('appended')
     const $tweetData = createTweetElement(tweet);
-    $('#tweets-container').append($tweetData);
+    $('#tweets-container').prepend($tweetData);
   }
 }
 
@@ -80,10 +32,40 @@ const createTweetElement = (tweetData) => {
   const $i3 = $('<i>').addClass('fas fa-heart').addClass('tweet-footer-icons');
   $div.append($i1, $i2, $i3);
   $footer.append($output, $div);
+  
   return $section
 }
 
 $(document).ready(()=> {
-   renderTweets(data);
-
+  const loadTweets = function() {
+    $.ajax('/tweets/', {method: 'GET'})
+      .then(function(allTweets) {
+        renderTweets(allTweets);
+      })
+  }
+  const $form = $('#new-tweet');
+  $form.on ('submit', function() {
+    event.preventDefault();
+    
+    $('#overError').hide();
+    $('#emptyError').hide();
+    
+    const input = $("#tweet-text")['0'].value.length;
+    if (input <= 0) {
+      if ($('#emptyError').is(":hidden")) {
+        $('#emptyError').slideDown("slow");
+      } 
+    } else if (input > 140) {
+      if ($('#overError').is(":hidden")) {
+        $('#overError').slideDown("slow");
+      } 
+      return;
+    }
+    const urlEncodedData = $(this).serialize();
+    $.post('/tweets/',urlEncodedData, (response) => {
+      loadTweets();
+      $("#tweet-text").val('');
+    })
+  })
+  loadTweets();
 })

@@ -45,8 +45,11 @@ main {
   border-color: #545149;
   border-style: solid;
   width: 100%;
+  max-width: 100%;
   margin: 10px;
 }
+
+
 
 .existing-tweets:hover {
   box-shadow: 10px 10px lightblue;
@@ -124,6 +127,12 @@ div[name="tweet-footer-icons"] {
   color: #e1ad01 ;
 }
 
+.error-message {
+  border-style: solid;
+  border-width: 2px;
+  border-color: red;
+  color: red;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
