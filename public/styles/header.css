@@ -5,10 +5,10 @@ header {
   height: 400px;
   width: 100%;
   flex-direction: column;
-  
+  color:azure;
 }
 
-img.userPhoto {
+.userPhoto {
   padding-top: 120px;
 }
 
