@@ -5,6 +5,10 @@
   width: 99%
 }
 
+section[hidden] {
+  display:none;
+}
+
 textarea {
   background-color: #f4f1ec;
   resize: none;

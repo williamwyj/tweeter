@@ -37,6 +37,14 @@ const createTweetElement = (tweetData) => {
 }
 
 $(document).ready(()=> {
+  $button = $("#new-tweet-button");
+  $button.on ('click', function() {
+    if ($('.new-tweet').is(":hidden")) {
+      $('.new-tweet').slideDown("slow");
+    } else if ($('.new-tweet').is(":visible")) {
+      $('.new-tweet').slideUp("slow");
+    }
+  })
   const loadTweets = function() {
     $.ajax('/tweets/', {method: 'GET'})
       .then(function(allTweets) {

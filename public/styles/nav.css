@@ -31,3 +31,28 @@ i {
   display: flex;
   color: red
 }
+
+#new-tweet-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background : transparent;
+  border: none;
+}
+
+i[class="fas fa-angle-double-down"] {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+}
+
+i[class="fas fa-angle-double-down"]:hover {
+  animation-name : bounce;
+  animation-timing-function: ease;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(10px);}
+  100%{ transform: translateY(0);}
+}

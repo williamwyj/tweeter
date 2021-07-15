@@ -31,10 +31,10 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
-      <div>
+      <button id="new-tweet-button">
         <span1><strong>Write</strong> a new tweet</span1>
         <i class="fas fa-angle-double-down"></i>
-      </div>
+      </button>
     </nav>
     <header>
       <div>
@@ -48,7 +48,7 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
+      <section hidden class="new-tweet">
         <p hidden class="error-message" id="emptyError">Tweet cannot be empty!</p>
         <p hidden class="error-message" id="overError">Tweet cannot exceed 140 characters!</p>
         <br>
