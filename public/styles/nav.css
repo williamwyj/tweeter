@@ -40,13 +40,14 @@ i {
   border: none;
 }
 
+#new-tweet-button:hover {
+  cursor:pointer;
+}
+
 i[class="fas fa-angle-double-down"] {
   animation-duration: 1s;
   animation-iteration-count: infinite;
   transform-origin: bottom;
-}
-
-i[class="fas fa-angle-double-down"]:hover {
   animation-name : bounce;
   animation-timing-function: ease;
 }
