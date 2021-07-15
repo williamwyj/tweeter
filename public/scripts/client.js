@@ -45,6 +45,21 @@ $(document).ready(()=> {
       $('.new-tweet').slideUp("slow");
     }
   })
+
+  $topButton = $('#topButton');
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 0){
+      $topButton.show();
+    } else {
+      $topButton.hide();
+    }
+  });
+  //function to move to the top of the page for the top button
+  
+  $topButton.on ('click', function topFunction() {
+    $(window).scrollTop(0);
+  })
+
   const loadTweets = function() {
     $.ajax('/tweets/', {method: 'GET'})
       .then(function(allTweets) {

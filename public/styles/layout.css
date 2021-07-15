@@ -133,6 +133,37 @@ div[name="tweet-footer-icons"] {
   border-color: red;
   color: red;
 }
+
+#topButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: red;
+  padding: 15px;
+  border-radius: 40%;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+}
+i[class="fas fa-angle-double-up"] {
+  color:white;
+  
+}
+
+#topButton:hover {
+  animation-name : bounceUp;
+  animation-timing-function: ease;
+}
+
+@keyframes bounceUp {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+  100%{ transform: translateY(0);}
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

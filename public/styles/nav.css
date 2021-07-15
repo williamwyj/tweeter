@@ -41,7 +41,7 @@ i {
 }
 
 i[class="fas fa-angle-double-down"] {
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   transform-origin: bottom;
 }
