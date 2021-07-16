@@ -4,14 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+//function to render all tweets in the database
 const renderTweets = function(tweets) {
   $('#tweets-container').empty();
   for (const tweet of tweets) {
     const $tweetData = createTweetElement(tweet);
     $('#tweets-container').prepend($tweetData);
   }
-}
-
+};
+//Creates HTML code for displaying existing tweets using jQuery to avoid Cross-Site scripting hack
 const createTweetElement = (tweetData) => {
   const $section = $('<section>').addClass('existing-tweets');
   const $header = $('<header>').addClass('tweet-header');
@@ -33,11 +34,12 @@ const createTweetElement = (tweetData) => {
   $div.append($i1, $i2, $i3);
   $footer.append($output, $div);
   
-  return $section
-}
+  return $section;
+};
 
 $(document).ready(()=> {
-  $button = $("#new-tweet-button");
+  //For the Write a tweet button to reveal the write-new-tweet area if it is hidden or hide it if it is hidden
+  const $button = $("#new-tweet-button");
   $button.on ('click', function() {
     if ($('.new-tweet').is(":hidden")) {
       $('.new-tweet').slideDown("slow");
@@ -45,11 +47,11 @@ $(document).ready(()=> {
     } else if ($('.new-tweet').is(":visible")) {
       $('.new-tweet').slideUp("slow");
     }
-  })
-
-  $topButton = $('#topButton');
+  });
+  //To show the topButton on the bottom right corner if page scrolled down, to hide it if page already at the top
+  const $topButton = $('#topButton');
   $(window).scroll(function() {
-    if ($(window).scrollTop() > 0){
+    if ($(window).scrollTop() > 0) {
       $topButton.show();
     } else {
       $topButton.hide();
@@ -59,18 +61,21 @@ $(document).ready(()=> {
   
   $topButton.on ('click', function topFunction() {
     $(window).scrollTop(0);
-  })
+  });
 
+  // ajax GET request to process response data from server, use the data to render
   const loadTweets = function() {
     $.ajax('/tweets/', {method: 'GET'})
       .then(function(allTweets) {
         renderTweets(allTweets);
-      })
-  }
+      });
+  };
+
+  //form for entering new tweets
   const $form = $('#new-tweet');
   $form.on ('submit', function() {
     event.preventDefault();
-    
+    //hide error message before submitted text is processed for error
     $('#overError').hide();
     $('#emptyError').hide();
     
@@ -82,14 +87,15 @@ $(document).ready(()=> {
     } else if (input > 140) {
       if ($('#overError').is(":hidden")) {
         $('#overError').slideDown("slow");
-      } 
+      }
       return;
     }
     const urlEncodedData = $(this).serialize();
+    //record new tweet in database and clear the tweet text entry form
     $.post('/tweets/',urlEncodedData, (response) => {
       loadTweets();
       $("#tweet-text").val('');
-    })
-  })
+    });
+  });
   loadTweets();
-})
+});
