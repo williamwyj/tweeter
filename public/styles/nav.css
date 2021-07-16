@@ -12,48 +12,42 @@ nav {
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100; 
+  width: 100;
 }
-
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 nav span {
   display: flex;
   font-size: 24px;
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
 }
-
-i {
-  display: flex;
-  color: red
-}
-
-#new-tweet-button {
+nav #new-tweet-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background : transparent;
+  background: transparent;
   border: none;
 }
-
-#new-tweet-button:hover {
-  cursor:pointer;
+nav #new-tweet-button i {
+  display: flex;
+  color: red;
 }
-
-i[class="fas fa-angle-double-down"] {
+nav #new-tweet-button i[class="fas fa-angle-double-down"] {
   animation-duration: 1s;
   animation-iteration-count: infinite;
   transform-origin: bottom;
-  animation-name : bounce;
+  animation-name: bounce;
   animation-timing-function: ease;
 }
-
 @keyframes bounce {
-  0% { transform: translateY(0);}
-  50% { transform: translateY(10px);}
-  100%{ transform: translateY(0);}
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+nav #new-tweet-button:hover {
+  cursor: pointer;
 }

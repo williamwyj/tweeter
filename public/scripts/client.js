@@ -41,6 +41,7 @@ $(document).ready(()=> {
   $button.on ('click', function() {
     if ($('.new-tweet').is(":hidden")) {
       $('.new-tweet').slideDown("slow");
+      $('#tweet-text').focus();
     } else if ($('.new-tweet').is(":visible")) {
       $('.new-tweet').slideUp("slow");
     }

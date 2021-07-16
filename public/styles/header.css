@@ -5,7 +5,8 @@ header {
   height: 400px;
   width: 100%;
   flex-direction: column;
-  color:azure;
+  color: azure;
+  align-items: center;
 }
 
 .userPhoto {
@@ -19,5 +20,3 @@ br {
 h2 {
   margin: 0;
 }
-
-
